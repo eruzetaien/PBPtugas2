@@ -6,7 +6,7 @@ def show_katalog(request):
     data_barang_katalog = CatalogItem.objects.all()
     context = {
     'list_katalog': data_barang_katalog,
-    'nama': 'Ruzain',
+    'nama': 'Muhammad Ruzain',
     'npm' : '2106750250'
     }
     return render(request, "katalog.html", context)
