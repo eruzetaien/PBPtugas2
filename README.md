@@ -1,4 +1,5 @@
-![This is an image](https://github.com/eruzetaien/PBPtugas2/blob/e14a970fbd4eede404ebfd8cbb182b7eff8683d0/MVT%20Django.png))
+[Tugas 2 PBP](https://heshturia.herokuapp.com/katalog/)
+![MVT Django](https://github.com/eruzetaien/PBPtugas2/blob/e14a970fbd4eede404ebfd8cbb182b7eff8683d0/MVT%20Django.png)
 Sesuai namanya virtual environment adalah lingkungan virtual yang terisolasi, tertutup, dan tidak bisa diakses dari luar. Alasan kenapa menggunakan virtual environment
 ini pada proyek django adalah untuk menjaga konsistensi modul-modul yang digunakan untuk membuat aplikasi. Misalnya, kita membuat aplikasi menggunakan django dan 
 berjalan lancar di modul versi 1.9. Namun, ketika django merilis versi terbaru, misal 4.1, dan kita memperbarui modulnya. Ternyata aplikasi kita tidak dapat berjalan
