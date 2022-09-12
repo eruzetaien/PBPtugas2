@@ -16,4 +16,4 @@ menambahkan elemen baru berupa path katalog pada list urlpatterns. Hal ini dilak
 Jika cocok dengan aplikasi katalog, maka akan dipanggil fungsi show_katalog yang telah dibuat.
 Tahap terakhir adalah melakukan deployment ke Heroku. Untuk melakukannya,perlu menambahkan dua secret pada repository GitHub, yang pertama HEROKU_API_KEY sebagai namanya
 dan API key dari Heroku yang dapat ditemukan di Account Setting sebagai valuenya. Yang kedua HEROKU_APP_NAME sebagai namanyadan nama aplikasi heroku sebagai valuenya.
-Setelah itu aplikasi akan otomatis di-deploy ke Heroku
+Setelah itu aplikasi akan otomatis di-deploy ke Heroku.
