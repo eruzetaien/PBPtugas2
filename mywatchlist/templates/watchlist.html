@@ -1,31 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Tugas 3 Assignment PBP/PBD</h1>
 
-<h5>Name: {{nama}}</h5>
+<head>
+    <title>Home</title>
+    <style>
+        /* th {
+            width:inherit;
+        } */
 
-<h5>Student ID: {{npm}} </h5>
+        tr, th, td{
+            vertical-align: top;
 
-<table>
-    <tr>
-    <th>Title</th>
-    <th>Watched</th>
-    <th>Rating</th>
-    <th>Release Date</th>
-    <th>Review</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for anime in watchlist %}
+            color:rgb(16, 97, 148); 
+            border: 1px solid;
+            padding: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Tugas 3 Assignment PBP/PBD</h1>
+
+    <h5>Name: {{nama}}</h5>
+
+    <h5>Student ID: {{npm}} </h5>
+
+    <table>
         <tr>
-            <td>{{anime.title}}</td>
-            <td>{{anime.watched}}</td>
-            <td>{{anime.rating}}</td>
-            <td>{{anime.release_date}}</td>
-            <td><a href="{{anime.review}}">Link</a></td>
+        <th>Title</th>
+        <th>Watched</th>
+        <th>Rating</th>
+        <th>Release Date</th>
+        <th>Review</th>
         </tr>
-    {% endfor %}
-</table>
-
-
+        {% comment %} Add the data below this line {% endcomment %}
+        {% for anime in watchlist %}
+            <tr>
+                <td>{{anime.title}}</td>
+                <td>{{anime.watched}}</td>
+                <td>{{anime.rating}}</td>
+                <td>{{anime.release_date}}</td>
+                <td><a href="{{anime.review}}">Link</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
 
 {% endblock content %}
