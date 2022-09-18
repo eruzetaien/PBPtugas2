@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from katalog.models import CatalogItem
+from django.http import HttpResponse
+from django.core import serializers
 
 # TODO: Create your views here.
 def show_katalog(request):
@@ -10,3 +12,7 @@ def show_katalog(request):
     'npm' : '2106750250'
     }
     return render(request, "katalog.html", context)
+
+def show_xml(request):
+    data =CatalogItem.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
