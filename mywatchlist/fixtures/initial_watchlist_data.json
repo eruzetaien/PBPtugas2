@@ -1,0 +1,113 @@
+[
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 1,
+        "fields": {
+            "watched" : "False",
+            "title" : "Made in Abyss",
+            "rating" : 8.67,
+            "release_date" : "2017-07-07",
+            "review" : "https://myanimelist.net/anime/34599/Made_in_Abyss/reviews"
+        }
+    },
+
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 2,
+        "fields": {
+            "watched" :"False",
+            "title" : "Neon Genesis Evangelion",
+            "rating" : 8.34,
+            "release_date" :"1995-10-04",
+            "review" : "https://myanimelist.net/anime/30/Neon_Genesis_Evangelion/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 3,
+        "fields": { 
+            "watched" : "False",
+            "title" : "Cowboy Bebop",
+            "rating" : 8.75,
+            "release_date" : "1998-04-03",
+            "review" : "https://myanimelist.net/anime/1/Cowboy_Bebop/reviews"
+        }
+    },    {
+        "model": "mywatchlist.watchlist",
+        "pk": 4,
+        "fields": {
+            "watched" : "False",
+            "title" : "Steins;Gate",
+            "rating" : 9.08,
+            "release_date" : "2011-04-06",
+            "review" : "https://myanimelist.net/anime/9253/Steins_Gate/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 5,
+        "fields": {
+            "watched" : "True",
+            "title" : "Grand Blue",
+            "rating" : 8.43,
+            "release_date" : "2018-07-14",
+            "review" : "https://myanimelist.net/anime/37105/Grand_Blue/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 6,
+        "fields": {
+            "watched" : "False",
+            "title" : "Ousama Ranking",
+            "rating" : 8.59,
+            "release_date" : "2021-10-15",
+            "review" : "https://myanimelist.net/anime/37105/Grand_Blue/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 7,
+        "fields": {
+            "watched" : "False",
+            "title" : "JoJo no Kimyou na Bouken Part 6: Stone Ocean",
+            "rating" : 8.30            ,
+            "release_date" : "2021-12-01",
+            "review" : "https://myanimelist.net/anime/48661/JoJo_no_Kimyou_na_Bouken_Part_6__Stone_Ocean/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 8,
+        "fields": {
+            "watched" : "False",
+            "title" : "House of the Dragon",
+            "rating" : 8.7,
+            "release_date" : "2022-08-21",
+            "review" : "https://www.imdb.com/title/tt11198330/reviews/?ref_=tt_ql_urv"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 9,
+        "fields": {
+            "watched" : "True",
+            "title" : "Boku dake ga Inai Machi",
+            "rating" : 8.31,
+            "release_date" : "2016-01-08",
+            "review" : "https://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi/reviews"
+        }
+    },    
+    {
+        "model": "mywatchlist.watchlist",
+        "pk": 10,
+        "fields": {
+            "watched" : "True",
+            "title" : "Monster",
+            "rating" : 8.84,
+            "release_date" : "2004-04-07",
+            "review" : "https://myanimelist.net/anime/19/Monster/reviews"
+        }
+    }
+    
+]
