@@ -10,7 +10,6 @@
             "review" : "https://myanimelist.net/anime/34599/Made_in_Abyss/reviews"
         }
     },
-
     {
         "model": "mywatchlist.watchlist",
         "pk": 2,

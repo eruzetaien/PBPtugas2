@@ -4,7 +4,7 @@ from mywatchlist.views import show_watchlist_xml
 from mywatchlist.views import show_watchlist_json
 # TODO: Implement Routings Here
 
-app_name = ''
+app_name = 'mywatchlist'
 
 urlpatterns = [
     path('html/', show_watchlist, name='show_watchlist'),
