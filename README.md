@@ -1,4 +1,4 @@
-[Tugas 2](Tugas2.md)
+
 
 Perbedaan antara html dengan xml dan json adalah fungsinya, html berfungsi untuk menampilkan data. Sedangkan, xml dan json berfungsi untuk menyimpan dan mengirim data. Html menggunakan tag yang sudah didefinisikan sebelumnya untuk struktur penulisannya.
 
@@ -21,3 +21,6 @@ berdasarkan alamat yang dituju. dan menambahkan file urls.py tersebut ke file ur
 platform heroku dapat melakukan loaddata secara otomatis
 9. Membuat class di file tests.py untuk melakukan testing, class berisi 3 fungsi akan mengecek apakah permintaan pengguna 
 berhasil diterima, dipahami, dan diterima.
+
+
+[Tugas 2](Tugas2.md)
