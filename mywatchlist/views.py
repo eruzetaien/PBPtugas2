@@ -7,10 +7,21 @@ from django.core import serializers
 # Create your views here.
 def show_watchlist(request):
     data_watchlist = Watchlist.objects.all()
+    counter_watched = 0
+    for show in data_watchlist :
+        if show.watched == True :
+            counter_watched += 1
+            
+    if counter_watched >= len(data_watchlist):
+        tontonan = 'banyak'
+    else :
+        tontonan = 'sedikit'
+
     context = {
     'watchlist': data_watchlist,
     'nama': 'Muhammad Ruzain',
-    'npm' : '2106750250'
+    'npm' : '2106750250',
+    'tontonan' : tontonan
     }
     return render(request, "watchlist.html", context)
 

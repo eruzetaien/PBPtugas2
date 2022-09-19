@@ -35,6 +35,7 @@
         </tr>
         {% comment %} Add the data below this line {% endcomment %}
         {% for anime in watchlist %}
+
             <tr>
                 <td>{{anime.title}}</td>
                 <td>{{anime.watched}}</td>
@@ -44,6 +45,13 @@
             </tr>
         {% endfor %}
     </table>
+
+    {% if tontonan == "banyak" %}
+        <h2> Selamat, kamu sudah banyak menonton! </h2>
+    {% else %}
+        <h2> Wah, kamu masih sedikit menonton! </h2>
+    {% endif %}
+
 </body>
 
 {% endblock content %}
