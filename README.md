@@ -1,10 +1,11 @@
 
 
-Perbedaan antara html dengan xml dan json adalah fungsinya, html berfungsi untuk menampilkan data. Sedangkan, xml dan json berfungsi untuk menyimpan dan mengirim data. Html menggunakan tag yang sudah didefinisikan sebelumnya untuk struktur penulisannya.
+Perbedaan antara html dengan xml dan json adalah fokus fungsinya, html fokus pada bagaimana data ditampilkan di halaman. Sedangkan, xml dan json berfokus untuk menyimpan dan mengirim data saja. Html menggunakan tag yang sudah didefinisikan sebelumnya untuk struktur penulisannya.
 
 XML, sama seperti HTML, merupakan markup language, sehingga menggunakan tag dalam penulisannya dan lebih struktural. tidak seperti json yang penulisannya menggunakan pasangan name dan value sama seperti attribut objek di JavaScript seusuai namanya, JavaScript ObjectNotation. Kelebihan dari Json dibandingkan XML adalah JSON lebih ringan dan dapatmengirim data berupa array. Namun, dari segi keamanan, XML lebih unggul dibandingkan JSON.
 
-Data delivery penting dalam pengimplementasian sebuah platform karenadengan itu lah pengguna dapat melihat konten-konten yang kita buat di sebuah platform. Server mengirimkan data yang akan diterima dan ditampilkan ke pengguna
+Data delivery penting dalam pengimplementasian sebuah platform karenadengan itu lah pengguna dapat melihat konten-konten yang kita buat di sebuah platform. Server mengirimkan data yang akan diterima dan ditampilkan ke pengguna, yang terpenting dari data delivery adalah pengguna tidak perlu memuat halaman penuh untuk menerima suatu data, sehingga waktu akses dan bandwith bisa diminimalisir.
+
 
 Langkah pengimplementasian tugas 3:
 1. Membuat folder aplikasi bernama mywatchlist. langkah ini bisa dilakukan menggunakan fungsi startapp atau menyalin
