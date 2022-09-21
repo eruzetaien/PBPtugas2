@@ -38,7 +38,11 @@
 
             <tr>
                 <td>{{anime.title}}</td>
-                <td>{{anime.watched}}</td>
+                {% if anime.watched %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
                 <td>{{anime.rating}}</td>
                 <td>{{anime.release_date}}</td>
                 <td><a href="{{anime.review}}">Link</a></td>
