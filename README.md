@@ -1,4 +1,7 @@
-
+Halaman tugas 3 :
+[HTML](https://heshturia.herokuapp.com/mywatchlist/html/)
+[XML](https://heshturia.herokuapp.com/mywatchlist/xml/)
+[JSON](https://heshturia.herokuapp.com/mywatchlist/json/)
 
 Perbedaan antara html dengan xml dan json adalah fokus fungsinya, html fokus pada bagaimana data ditampilkan di halaman. Sedangkan, xml dan json berfokus untuk menyimpan dan mengirim data saja. Html menggunakan tag yang sudah didefinisikan sebelumnya untuk struktur penulisannya.
 
