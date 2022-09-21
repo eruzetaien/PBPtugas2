@@ -1,7 +1,7 @@
-Halaman tugas 3 :
-[HTML](https://heshturia.herokuapp.com/mywatchlist/html/)
-[XML](https://heshturia.herokuapp.com/mywatchlist/xml/)
-[JSON](https://heshturia.herokuapp.com/mywatchlist/json/)
+### Halaman Tugas 3 :
+[HTML](https://heshturia.herokuapp.com/mywatchlist/html/)  
+[XML](https://heshturia.herokuapp.com/mywatchlist/xml/)  
+[JSON](https://heshturia.herokuapp.com/mywatchlist/json/)  
 
 Perbedaan antara html dengan xml dan json adalah fokus fungsinya, html fokus pada bagaimana data ditampilkan di halaman. Sedangkan, xml dan json berfokus untuk menyimpan dan mengirim data saja. Html menggunakan tag yang sudah didefinisikan sebelumnya untuk struktur penulisannya.
 
@@ -26,5 +26,12 @@ platform heroku dapat melakukan loaddata secara otomatis
 9. Membuat class di file tests.py untuk melakukan testing, class berisi 3 fungsi akan mengecek apakah permintaan pengguna 
 berhasil diterima, dipahami, dan diterima.
 
+#### Screenshoot Postman
+##### HTML
+[HTML Postman](https://github.com/eruzetaien/PBPtugas2/blob/main/ImgTugas3/SS_HTML_postman.png)
+##### XML
+[XML Postman](https://github.com/eruzetaien/PBPtugas2/blob/main/ImgTugas3/SS_XML_postman.png)
+##### JSON
+[JSON Postman](https://github.com/eruzetaien/PBPtugas2/blob/main/ImgTugas3/SS_JSON_postman.png)
 
 [Tugas 2](Tugas2.md)
