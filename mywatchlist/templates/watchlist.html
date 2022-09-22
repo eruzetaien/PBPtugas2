@@ -14,6 +14,7 @@
             color:rgb(16, 97, 148); 
             border: 1px solid;
             padding: 5px;
+            
         }
         
     </style>
@@ -45,7 +46,13 @@
                 {% endif %}
                 <td>{{anime.rating}}</td>
                 <td>{{anime.release_date}}</td>
-                <td><a href="{{anime.review}}" target="_blank">Link</a></td>
+                
+                {% if "https" in anime.review %}
+                    <td style="text-align: center;"><a href="{{anime.review}}" target="_blank">Link</a></td>
+                {% else %}
+                    <td style="text-align: center;">{{anime.review}}</td>
+                {% endif %}
+                
             </tr>
         {% endfor %}
     </table>
