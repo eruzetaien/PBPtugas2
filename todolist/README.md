@@ -18,13 +18,14 @@ Langkah pengimplementasian tugas 4:
   d. logout_user, menggunakan fungsi logout() dari django, mengarahkan ke halaman login  
   e. create task, menggunakan form CreateTask() dari file forms.py, digunakan untuk membuat task baru, form berupa input text judul dan dekskripsi task  
   f. change_status, mengubah atribut is_finished pada objek Task  
-  g. delete, menghapus objek task  
-5. Membuat file respon HTML  
+  g. delete, menghapus objek task 
+6. Meretriksi akses halaman utama, sehingga memerlukan login terlebih dahulu. dan menambahkan cookies, sehingga user tidak perlu login berulang kali ketika mengakses halama untuk jangka waktu tertentu
+7. Membuat file respon HTML  
   a. todolist, halaman utama berisi tabel todolist dari user  
   b. login  
   c. register  
   d. create_task, halaman form untuk menambah task baru  
-6. Melakukan routing dengan memetakan fungsi view di file urls.py dalam folder todolist dan menambahkan alamat todolist pada file urls.py di folder project_django   
+8. Melakukan routing dengan memetakan fungsi view di file urls.py dalam folder todolist dan menambahkan alamat todolist pada file urls.py di folder project_django   
 
 [Tugas 2](Tugas2.md)
 [Tugas 3](Tugas3.md)
