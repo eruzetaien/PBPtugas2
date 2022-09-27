@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>ToDoList</title>
+    <style>
+        h2{ color: rgb(5, 85, 135) ;}
+        tr, th, td{
+            vertical-align: top;
+            color:rgb(16, 97, 148); 
+            border: 1px solid;
+            padding: 5px;
+            text-align: center;
+        }
+        a{
+            color: rgb(129, 6, 6);
+            text-decoration: none;
+        }
+        .tombol{ border: none; text-align: left;}        
+    </style>
+</head>
+<body>
+    <h1>Tugas 4 Assignment PBP/PBD</h1>
+
+    <h5>Name: {{nama}}</h5>
+
+    <h5>Student ID: {{npm}} </h5>
+
+    <h2>Selamat datang {{user}} !</h2>
+
+    <table>
+        <tr>
+        <th>Judul</th>
+        <th>Tanggal Pembuatan</th>
+        <th>Deskripsi</th>
+        <th>Status</th>
+        <th class="tombol"></th>
+        <th class="tombol"><button><a href="{% url 'todolist:create_task' %}">Tambah Task Baru </a></button></th> 
+
+        </tr>
+        {% comment %} Add the data below this line {% endcomment %}
+        {% for task in todolist %}
+            {% if task.user == user %}
+                <tr>
+                    <td>{{task.title}}</td>
+                    <td>{{task.date}}</td>
+                    <td>{{task.description}}</td>
+                    {% if task.is_finished %}
+                        <td>Selesai</td>
+                    {% else %}
+                        <td>Belum Selesai</td>
+                    {% endif %}
+                    <td class="tombol"><button><a href="change-status/{{task.id}}">Ubah Status</a</button></td>
+                    <td class="tombol"><button><a href="delete/{{task.id}}">Delete</a></button></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <br>
+    
+    <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+
+</body>
+
+{% endblock content %}
