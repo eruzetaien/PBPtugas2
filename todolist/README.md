@@ -1,7 +1,7 @@
 # Tugas 4
 ## [Halaman Tugas 4](https://heshturia.herokuapp.com/todolist)
 
-{% csrf_token %} pada elemen <form> berfungsi untuk membuat token yang akan digunakan untuk melakukan autentikasi pengguna. token akan selalu diperbarui ketika mengakses halaman. Jika kita tidak menyediakan kode tersebut, maka aplikasi kita berpotensi terkena serangan Cross Site Request Forgery (CSRF), dimana serangan tersebut akan memaksa pengguna untuk melakukan aksi yang tidak diinginkan, seperti mengganti password akun, secara tidak sadar
+{% csrf_token %}pada elemen <form> berfungsi untuk membuat token yang akan digunakan untuk melakukan autentikasi pengguna. token akan selalu diperbarui ketika mengakses halaman. Jika kita tidak menyediakan kode tersebut, maka aplikasi kita berpotensi terkena serangan Cross Site Request Forgery (CSRF), dimana serangan tersebut akan memaksa pengguna untuk melakukan aksi yang tidak diinginkan, seperti mengganti password akun, secara tidak sadar
 
 Untuk mebuat element form secara manual, kita perlu menggunakan tag <form> untuk menandakan kita sedang mengumpulkan input untuk dikirim ke server. Dalam tag <form> kita perlu mengisi atribut method (GET/POST) dan atribut action berisi alamat dimana data akan dikirim. Selanjutnya adalah membuat elemen <input> di dalam <form>, tipe dari elemnen input beragam, seperti text, radio button, checkbox, submit, dan, button.
 
