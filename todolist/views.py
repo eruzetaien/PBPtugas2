@@ -1,5 +1,4 @@
 import imp
-from msilib.schema import CreateFolder
 from django.shortcuts import render
 from django.shortcuts import redirect
 
