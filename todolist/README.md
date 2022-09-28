@@ -19,7 +19,7 @@ Langkah pengimplementasian tugas 4:
   e. create task, menggunakan form CreateTask() dari file forms.py, digunakan untuk membuat task baru, form berupa input text judul dan dekskripsi task  
   f. change_status, mengubah atribut is_finished pada objek Task  
   g. delete, menghapus objek task 
-6. Meretriksi akses halaman utama, sehingga memerlukan login terlebih dahulu. dan menambahkan cookies, sehingga user tidak perlu login berulang kali ketika mengakses halama untuk jangka waktu tertentu
+6. Meretriksi akses halaman utama, sehingga memerlukan login terlebih dahulu. dan menambahkan cookies, sehingga user tidak perlu login berulang kali ketika mengakses halaman
 7. Membuat file respon HTML  
   a. todolist, halaman utama berisi tabel todolist dari user  
   b. login  
