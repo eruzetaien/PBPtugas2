@@ -1,45 +1,69 @@
 {% extends 'base.html' %}
 
-{% block meta %}
-<title>Login</title>
-{% endblock meta %}
+<head>
+    {% block meta %}
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todolist/login.css' %}"/>
+    {% endblock meta %}
+</head>
 
 {% block content %}
 
-<div class = "login">
+<body>
+    <div class = "login bg-image">
+        <form method="POST" action="" class="vh-100 gradient-custom">
+            {% csrf_token %}
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
 
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
+                  <div class="card bg-danger text-white bg-opacity-75" style="border-radius: 1rem;">
                     
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+                    <div class="card-body p-5 text-center">
+          
+                      <div class="mb-md-5 mt-md-4 pb-5">
+          
+                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                        <p class="text-white-50 mb-5">Please enter your username and password!</p>
+                        
+                        <div class="form-floating mb-4 text-black">
+                          <input type="text" name="username" placeholder="Username" class="form-control form-control-lg" />
+                          <label class="form-label" for="typeEmailX">Username</label>
+                        </div>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+                        <div class="form-floating mb-4 text-black">
+                          <input input type="password" name="password" placeholder="Password" class="form-control form-control-lg" />
+                          <label class="form-label" for="typePasswordX">Password</label>
+                          
+                        </div>
+              
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit" value="Login">Login</button>
+          
+                      </div>
+          
+                      <div>
+                        <p class="mb-0">Belum mempunyai akun? <a href="{% url 'todolist:register' %}" class="text-white-50 fw-bold">Register</a>
+                        </p>
+                      </div>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+    
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
+                
+    </div>
+</body>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
-
-</div>
 
 {% endblock content %}

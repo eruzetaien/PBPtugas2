@@ -1,0 +1,10 @@
+body{
+    background-color: rgb(233, 233, 233);
+}
+
+.login{
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e96db3a-13bd-4c19-88b2-109db19e680a/dfas84z-fb6d138e-8d62-423a-8749-e7fee0d0ea60.jpg/v1/fill/w_1280,h_915,q_75,strp/megumin_by_helheshtur_dfas84z-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTE1IiwicGF0aCI6IlwvZlwvMGU5NmRiM2EtMTNiZC00YzE5LTg4YjItMTA5ZGIxOWU2ODBhXC9kZmFzODR6LWZiNmQxMzhlLThkNjItNDIzYS04NzQ5LWU3ZmVlMGQwZWE2MC5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.mdEsKSBhrADr2wK_4O7MlfWeO_lbaxiUkycksFSDNiw');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}

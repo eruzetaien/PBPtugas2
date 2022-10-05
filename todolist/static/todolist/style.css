@@ -1,0 +1,60 @@
+h2{ color: rgb(5, 85, 135) ;}
+tr, th, td{
+    vertical-align: top;
+    color:rgb(16, 97, 148); 
+    border: 1px solid;
+    padding: 5px;
+    text-align: center;
+}
+
+.tombol{ 
+    margin-bottom: 10px;
+}   
+
+.menu {
+    display:flex;
+    margin: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+nav{
+    background-color: blanchedalmond !important;
+}
+
+.navbar-brand {
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius:10px;
+}
+.navbar-brand:hover{
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.center{
+    height: 500px;
+    width: 500px;
+    border: 1px solid rgb(32, 32, 126);
+
+    display: flex;
+}
+
+.create_task{
+    height: 30%;
+    width: 30%;
+    background-color: rgb(177, 176, 230);
+    text-align: center;
+    padding: 2rem;
+
+    margin: auto;
+}
+/* div .card {
+    background-color: rgb(147, 205, 241) !important;
+} */
+

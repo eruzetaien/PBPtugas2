@@ -1,66 +1,100 @@
 {% extends 'base.html' %}
 {% block content %}
+<title>ToDoList</title>
 
-<head>
-    <title>ToDoList</title>
-    <style>
-        h2{ color: rgb(5, 85, 135) ;}
-        tr, th, td{
-            vertical-align: top;
-            color:rgb(16, 97, 148); 
-            border: 1px solid;
-            padding: 5px;
-            text-align: center;
-        }
-        a{
-            color: rgb(129, 6, 6);
-            text-decoration: none;
-        }
-        .tombol{ border: none; text-align: left;}        
-    </style>
-</head>
-<body>
-    <h1>Tugas 4 Assignment PBP/PBD</h1>
-
-    <h5>Name: {{nama}}</h5>
-
-    <h5>Student ID: {{npm}} </h5>
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'todolist/style.css' %}"/>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">TODOLIST</a>
+        <div class="navbar-nav">
+          <a href="{% url 'todolist:logout' %}" class="btn btn-secondary btn-outline-red" role="button" aria-pressed="true">Logout</a>
+        </div>
+    </div>
+</nav>  
+<div class = "menu">
     <h2>Selamat datang {{user}} !</h2>
+    <div>
+        <a class="btn btn-primary create-task" href="{% url 'todolist:create_task' %}">
+            Tambah Task Baru 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg> 
+        </a>
+    </div>
 
-    <table>
-        <tr>
-        <th>Judul</th>
-        <th>Tanggal Pembuatan</th>
-        <th>Deskripsi</th>
-        <th>Status</th>
-        <th class="tombol"></th>
-        <th class="tombol"><button><a href="{% url 'todolist:create_task' %}">Tambah Task Baru </a></button></th> 
 
-        </tr>
-        {% comment %} Add the data below this line {% endcomment %}
-        {% for task in todolist %}
-            {% if task.user == user %}
-                <tr>
-                    <td>{{task.title}}</td>
-                    <td>{{task.date}}</td>
-                    <td>{{task.description}}</td>
-                    {% if task.is_finished %}
-                        <td>Selesai</td>
-                    {% else %}
-                        <td>Belum Selesai</td>
-                    {% endif %}
-                    <td class="tombol"><button><a href="change-status/{{task.id}}">Ubah Status</a</button></td>
-                    <td class="tombol"><button><a href="delete/{{task.id}}">Delete</a></button></td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-    </table>
-    <br>
+
+</div>
+<div class="d-flex flex-wrap justify-content-center" >
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for task in todolist %}
+        {% if task.user == user %}
+            <div class="m-2">
+                {% if task.is_finished %}
+                <div class="card text-center h-100 border-success mb-3 text-success" style="width: 18rem;">
+                    <div class="card-header bg-success text-white">Selesai</div>
+
+                    <div class="card-body">
+                      <h5 class="card-title">{{task.title}}</h5>
+                      <p class="card-text">{{task.description}}</p>
+                    </div>
+                    
+                    <div class="tombol text-center mb-2">
+                        <a href="change-status/{{task.id}}" class="btn btn-primary">Ubah Status</a>
+                        <a href="delete/{{task.id}}" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            Delete
+                        </a>
+                    </div>
+                    
+                    <div class="card-footer text-muted ">
+                        {{task.date}}
+                    </div>
+                </div>
+                    
+                {% else %}
+                <div class="card text-center h-100" style="width: 18rem;">
+                    
+                    <div class="card-header">Belum Selesai</div>
+
+                    <div class="card-body">
+                      <h5 class="card-title">{{task.title}}</h5>
+                      <p class="card-text">{{task.description}}</p>
+                    </div>
+                    
+                    <div class="tombol text-center mb-2">
+                        <a href="change-status/{{task.id}}" class="btn btn-primary">Ubah Status</a>
+                        <a href="delete/{{task.id}}" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            Delete
+                        </a>
+                    </div>
+                    
+                    <div class="card-footer text-muted">
+                        {{task.date}}
+                    </div>
+                </div>
+                {% endif %}
+                
+            </div>
+                
+
+        {% endif %}
+    {% endfor %}
+</div>
+
+
     
-    <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
 
+<br>
 
-</body>
 
 {% endblock content %}
