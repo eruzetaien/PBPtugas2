@@ -2,6 +2,38 @@
 {% block content %}
 <title>ToDoList</title>
 
+<style>
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    h2{
+        font-size: 30px;
+    }
+    .menu {
+    flex-flow: column nowrap;
+    display:flex;
+    margin: 10px;
+    text-align: center;
+    }
+
+    .kartu:hover{
+        transform: scale(1.025);
+        box-shadow: 5px 6px 6px 2px #e9ecef;
+    }
+
+    @media(min-width:600px) {
+    .menu {
+    flex-flow: row;
+    display:flex;
+    margin: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    }
+</style>
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'todolist/style.css' %}"/>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,15 +55,13 @@
             </svg> 
         </a>
     </div>
-
-
-
 </div>
-<div class="d-flex flex-wrap justify-content-center" >
+
+<div class="container" >
     {% comment %} Add the data below this line {% endcomment %}
     {% for task in todolist %}
         {% if task.user == user %}
-            <div class="m-2">
+            <div class="m-2 kartu">
                 {% if task.is_finished %}
                 <div class="card text-center h-100 border-success mb-3 text-success" style="width: 18rem;">
                     <div class="card-header bg-success text-white">Selesai</div>

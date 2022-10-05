@@ -2,8 +2,31 @@
 
 {% block meta %}
 <title>Tambah Task</title>
-{% load static %}
-<link rel="stylesheet" href="{% static 'todolist/style.css' %}"/>
+
+<style>
+    body{
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.center{
+    text-align: center;
+    
+}
+.create_task{
+    border-radius: 10px;
+    background-color: rgb(181, 200, 255);
+    text-align: center;
+    padding: 2rem;
+}
+
+h2{
+    margin-bottom: 10px;
+}
+</style>
 {% endblock meta %}
 
 {% block content %}  
@@ -18,7 +41,7 @@
                 <form method="POST" >  
                     {% csrf_token %}   
                         <div class="form-outline form-black mb-4">
-                            <label class="form-label" for="typeEmailX">judul</label>
+                            <label class="form-label" for="typeEmailX">Judul</label>
                             {{form.judul}}
                         </div>
                         <div class="form-outline form-black mb-4">

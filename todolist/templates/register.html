@@ -2,97 +2,100 @@
 
 {% block meta %}
 <title>Registrasi Akun</title>
+<style>
+  body{
+      background-color: rgb(233, 233, 233);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .register{
+  width: 30%;
+  padding: 2rem;
+  margin: auto;
+  background-color: white;
+  }
+
+  .tombol{
+    width: 100%;
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login">
+<div class = "register">
     
-    <section class="vh-100 bg-image"
-        style="    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e96db3a-13bd-4c19-88b2-109db19e680a/denh1ig-c15037ff-7277-4a21-8def-a50b88ab306b.png/v1/fill/w_1095,h_730,q_70,strp/my_first_landscape_illustration_by_helheshtur_denh1ig-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIwMCIsInBhdGgiOiJcL2ZcLzBlOTZkYjNhLTEzYmQtNGMxOS04OGIyLTEwOWRiMTllNjgwYVwvZGVuaDFpZy1jMTUwMzdmZi03Mjc3LTRhMjEtOGRlZi1hNTBiODhhYjMwNmIucG5nIiwid2lkdGgiOiI8PTE4MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.EZ6AynV_CgUDbBt2g6fMI1A4WQQlqs3a1-Bk9cpIHSs');
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position:  0 -200px;">
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card" style="border-radius: 15px;">
-                <div class="card-body p-5">
-                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-    
-                    <form method="POST">
-                        {% csrf_token %}
-                          <span class="after:content-['*'] after:text-red-500 w-full">
-                            {{ form.username.label }}
-                          </span>
-                          <div class="form-outline mb-4">
-                            <input
-                              type="text"
-                              name="username"
-                              placeholder="Username"
-                              class="form-control form-control-lg"
-                            />
-                            {% if form.username.errors %}
-                            <div class="mt-2 text-red-500 text-sm w-full">
-                              {{ form.username.errors }}
-                            </div>
-                            {% endif %}
-                          </div>
-                    
-                          <span class="after:content-['*'] after:text-red-500 w-full">
-                            {{ form.password1.label }}
-                          </span>
-                          <div class="form-outline mb-4">
-                            <input
-                              type="password"
-                              name="password1"
-                              placeholder="Password"
-                              class="form-control form-control-lg"
-                            />
-                            {% if form.password1.errors %}
-                            <div class="mt-2 text-red-500 text-sm w-full">
-                              {{ form.password1.errors }}
-                            </div>
-                            {% endif %}
-                          </div>
-                    
-                          <span class="after:content-['*'] after:text-red-500 ">
-                            {{ form.password2.label }}
-                          </span>
-                          <div class="form-outline mb-4">
-                            <input
-                              type="password"
-                              name="password2"
-                              placeholder="Password"
-                              class="form-control form-control-lg"
-                            />
-                            {% if form.password2.errors %}
-                            <div class="mt-2 text-red-500 text-sm w-full">
-                              {{ form.password2.errors }}
-                            </div>
-                            {% endif %}
-                          </div>
-                    
-                          <div class="d-flex justify-content-center">
-                            <input
-                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" 
-                            value = "Register"
-                            type="submit"
-                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value = "Register"/>
-                            </div>
+    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                          <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/todolist/login/"
-                            class="fw-bold text-body"><u>Login here</u></a></p>
-                      </form>
+    <form method="POST">
+        {% csrf_token %}
+          <span class="after:content-['*'] after:text-red-500 w-full">
+            {{ form.username.label }}
+          </span>
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              class="form-control form-control-lg"
+            />
+            {% if form.username.errors %}
+            <div class="mt-2 text-red-500 text-sm w-full">
+              {{ form.username.errors }}
+            </div>
+            {% endif %}
+          </div>
     
-                </div>
-                </div>
+          <span class="after:content-['*'] after:text-red-500 w-full">
+            {{ form.password1.label }}
+          </span>
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              name="password1"
+              placeholder="Password"
+              class="form-control form-control-lg"
+            />
+            {% if form.password1.errors %}
+            <div class="mt-2 text-red-500 text-sm w-full">
+              {{ form.password1.errors }}
             </div>
+            {% endif %}
+          </div>
+    
+          <span class="after:content-['*'] after:text-red-500 ">
+            {{ form.password2.label }}
+          </span>
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              name="password2"
+              placeholder="Password"
+              class="form-control form-control-lg"
+            />
+            {% if form.password2.errors %}
+            <div class="mt-2 text-red-500 text-sm w-full">
+              {{ form.password2.errors }}
             </div>
-        </div>
-        </div>
-    </section>
+            {% endif %}
+          </div>
+    
+          <div class="d-flex justify-content-center ">
+            <input
+            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" 
+            value = "Register"
+            type="submit"
+            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value = "Register"/>
+            </div>
+
+          <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/todolist/login/"
+            class="fw-bold text-body"><u>Login here</u></a></p>
+      </form>
+
+
+</div>
 
         <!-- <form method="POST" >  
             {% csrf_token %}  
