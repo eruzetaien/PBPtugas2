@@ -6,7 +6,7 @@ Perbedaan Inline, Internal, dan External CSS ada pada penempatannya, Inline CSS 
 Tag HTML :  
 <head> untuk menyimpan metadata, dapat berisi tag <title> judul halaman, <style> inline CSS, <link> external CSS.
 <body> untuk menyimpan data yang akan ditampilkan di halaman, dapat berisi tag :  
-- Header dengan berbagai macam ukuran <h1>,<h2>, dst.
+- Header dengan berbagai macam ukuran h1,h2, dst.
 - <p> untuk membuat paragraf  
 - <br> untuk membuat garis baru (enter)  
 - <img> untuk menampilkan gambar  
