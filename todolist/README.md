@@ -1,12 +1,12 @@
-# Tugas 4
-## [Halaman Tugas 4](https://heshturia.herokuapp.com/todolist)
+# Tugas 5
+## [Halaman Tugas](https://heshturia.herokuapp.com/todolist)
 
 Perbedaan Inline, Internal, dan External CSS ada pada penempatannya, Inline CSS ditempatkan pada tag elemen tertentu, Internal CSS ditempatkan di dalam tag head HTML, dan External CSS ditempatkan di file yang berbeda dengan file HTML. Karena penempatan tersebut, inline CSS hanya bisa diterapkan untuk satu elemen tertentu saja, internal CSS dapat diterapkan pada banyak elemen menggunakan selector, tetapi terbatas hanya untuk satu halaman html. Sedangkan, external CSS dapat diterapkan untuk banyak halaman CSS 
 
 Tag HTML :  
 <head> untuk menyimpan metadata, dapat berisi tag <title> judul halaman, <style> inline CSS, <link> external CSS.
-<body> untuk menyimpan data yang akan ditampilkan di halaman, dapat berisi tag :  
-- Header dengan berbagai macam ukuran h1,h2, dst.
+<body> untuk menyimpan data yang akan ditampilkan di halaman, dapat berisi tag :    
+- Header dengan berbagai macam ukuran h1,h2, dst.  
 - <p> untuk membuat paragraf  
 - <br> untuk membuat garis baru (enter)  
 - <img> untuk menampilkan gambar  
