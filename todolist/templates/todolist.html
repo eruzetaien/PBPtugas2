@@ -2,6 +2,8 @@
 {% block content %}
 <title>ToDoList</title>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <style>
     .container{
         display: flex;
@@ -33,10 +35,11 @@
     }
     }
 </style>
-
 {% load static %}
 <link rel="stylesheet" href="{% static 'todolist/style.css' %}"/>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TODOLIST</a>
         <div class="navbar-nav">
@@ -45,86 +48,184 @@
     </div>
 </nav>  
 <div class = "menu">
-    <h2>Selamat datang {{user}} !</h2>
+    <h2>Selamat datang <span id="nama-pengguna">{{user}}</span> !</h2>
+    <input type="hidden" id = "id-user" name="submit" value="{{user.id}}"/>
     <div>
-        <a class="btn btn-primary create-task" href="{% url 'todolist:create_task' %}">
-            Tambah Task Baru 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg> 
-        </a>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-task">
+        Add Task             
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg> 
+    </button>
+  
+  <!-- Modal -->
+    <div class="modal fade" id="add-task" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <form method="POST" id="add-task-form" >  
+                        {% csrf_token %}
+                            <div class="form-floating mb-4 text-black">
+                                <input id="judul" type="text" name="judul" placeholder="Title" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX">Judul</label>
+                            </div>   
+
+                            <div class="form-floating mb-4 text-black">
+                                <input id="deskripsi" type="text" name="deskripsi" placeholder="Description" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX">Deskripsi</label>
+                            </div>   
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input class="btn btn-primary" type="submit" name="submit" value="Add"/>
+                            </div>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container" >
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for task in todolist %}
-        {% if task.user == user %}
-            <div class="m-2 kartu">
-                {% if task.is_finished %}
-                <div class="card text-center h-100 border-success mb-3 text-success" style="width: 18rem;">
-                    <div class="card-header bg-success text-white">Selesai</div>
+<div class="container" id = "card-container" ></div>
 
-                    <div class="card-body">
-                      <h5 class="card-title">{{task.title}}</h5>
-                      <p class="card-text">{{task.description}}</p>
-                    </div>
-                    
-                    <div class="tombol text-center mb-2">
-                        <a href="change-status/{{task.id}}" class="btn btn-primary">Ubah Status</a>
-                        <a href="delete/{{task.id}}" class="btn btn-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                            Delete
-                        </a>
-                    </div>
-                    
-                    <div class="card-footer text-muted ">
-                        {{task.date}}
-                    </div>
-                </div>
-                    
-                {% else %}
-                <div class="card text-center h-100" style="width: 18rem;">
-                    
-                    <div class="card-header">Belum Selesai</div>
-
-                    <div class="card-body">
-                      <h5 class="card-title">{{task.title}}</h5>
-                      <p class="card-text">{{task.description}}</p>
-                    </div>
-                    
-                    <div class="tombol text-center mb-2">
-                        <a href="change-status/{{task.id}}" class="btn btn-primary">Ubah Status</a>
-                        <a href="delete/{{task.id}}" class="btn btn-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                            Delete
-                        </a>
-                    </div>
-                    
-                    <div class="card-footer text-muted">
-                        {{task.date}}
-                    </div>
-                </div>
-                {% endif %}
-                
-            </div>
-                
-
-        {% endif %}
-    {% endfor %}
-</div>
+<script type="text/javascript">
+    var user =  document.getElementById("id-user").value;
 
 
+
+    $(document).ready(function() {
+        
+        getForm();
+
+        $(document).on('submit',"#add-task-form",function (e) {
+        e.preventDefault();
+
+        var judul = $("#judul").val();
+        var deskripsi = $("#deskripsi").val();
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'todolist:add_task' %}",
+            async:true,
+            data: {
+                judul: judul,
+                deskripsi: deskripsi,
+                csrfmiddlewaretoken:$('input[name = csrfmiddlewaretoken]').val()
+            },
+            success: function (response) {
+                $("#card-container").empty();
+                getForm();
+            },
+            error: function (error) {
+                console.log(error);
+            },
+
+        });
+
+      });
+      
+    });
+
+    function getForm(){
+        $.get("{% url 'todolist:show_json' %}", function(data) {
+            $.each(data, function(index, value) {
+                if (value.fields.user == user) {
+
+                    if(value.fields.is_finished){
+                        $("#card-container").append(
+                            "<div class='m-2 kartu'> " +
+                                "<div class='card text-center h-100 border-success mb-3 text-success' style='width: 18rem;'> " +
+                                    "<div class='card-header bg-success text-white'>Selesai</div>" +
+
+                                    "<div class='card-body'>" +
+                                        "<h5 class='card-title'>" + value.fields.title + "</h5>" +
+                                        "<p class='card-text'>" + value.fields.description + "</p>" +
+                                    "</div>" +
+                        
+                                    "<div class='tombol text-center mb-2'>" +
+                                        "<a href='change-status/" + value.pk+ "' class='btn btn-primary'>Ubah Status</a>" +
+                                        "<a href='delete/" + value.pk + "' class='btn btn-danger'>" +
+                                            "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>" +
+                                                "<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>" +
+                                                "<path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>" +
+                                            "</svg> Delete" +
+                                        "</a>" +
+                                    "</div>" +
+                        
+                                    "<div class='card-footer text-muted '>" +
+                                         value.fields.date +
+                                    "</div>" +
+
+                                "</div>" +
+                            "</div> "
+                        );
+                    } else {
+                        $("#card-container").append(
+                            "<div class='m-2 kartu'> " +
+                                "<div class='card text-center h-100 mb-3' style='width: 18rem;'> " +
+                                    "<div class='card-header'>Selesai</div>" +
+
+                                    "<div class='card-body'>" +
+                                        "<h5 class='card-title'>" + value.fields.title + "</h5>" +
+                                        "<p class='card-text'>" + value.fields.description + "</p>" +
+                                    "</div>" +
+                        
+                                    "<div class='tombol text-center mb-2'>" +
+                                        "<a onclick='changeStatus(" + value.pk + ")' class='btn btn-primary'>Ubah Status</a>" +                                        
+                                        "<a onclick='deleteTask(" + value.pk + ")' class='btn btn-danger'>" +
+                                            "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>" +
+                                                "<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>" +
+                                                "<path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>" +
+                                            "</svg> Delete" +
+                                        "</a>" +
+                                    "</div>" +
+                        
+                                    "<div class='card-footer text-muted '>" +
+                                         value.fields.date +
+                                    "</div>" +
+                                    
+                                "</div>" +
+                            "</div> "
+                        );
+                    }
+                }
+            });
+        });
+    }
+
+    function deleteTask(id) {
+        $.ajax({
+            type: 'POST',
+            url:'delete/' + id,
+            data: {csrfmiddlewaretoken:$('input[name = csrfmiddlewaretoken]').val(),},
+            success: function (response) {
+                $("#card-container").empty();
+                getForm();
+            },
+        });
+    }
+
+    function changeStatus(id) {
+        $.ajax({
+            type: 'POST',
+            url:"change-status/" + id,
+            data: {csrfmiddlewaretoken:$('input[name = csrfmiddlewaretoken]').val() },
+            success: function (response) {
+                $("#card-container").empty();
+                getForm();
+            },
+        });
+    }
     
-
-<br>
-
+</script>
 
 {% endblock content %}

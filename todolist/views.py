@@ -1,4 +1,5 @@
 import imp
+from turtle import title
 from django.shortcuts import render
 from django.shortcuts import redirect
 
@@ -13,7 +14,13 @@ from todolist.models import Task
 
 import datetime
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.http import JsonResponse
+
+from django.core import serializers
 from django.urls import reverse
+
+
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -60,6 +67,8 @@ def logout_user(request):
     logout(request)
     return redirect('todolist:login')
 
+
+# without ajax
 def create_task(request):
     form = CreateTask()
 
@@ -76,15 +85,48 @@ def create_task(request):
     context = {'form':form}
     return render(request, 'create_task.html', context)
 
+# def change_status(request, id):
+#     task = Task.objects.get(id=id)
+#     task.is_finished = not task.is_finished
+#     task.save()
+#     return redirect('todolist:show_todolist')
+
+# def delete(request, id):
+#     task = Task.objects.get(id=id)
+#     task.delete()
+#     return redirect('todolist:show_todolist')
+
+def show_json(request):
+    data = Task.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def add_task(request):
+    if request.method == 'POST':
+        judul     = request.POST.get('judul')
+        deskripsi = request.POST.get('deskripsi')
+        user = request.user
+
+        Task.objects.create(
+            user      = user,
+            title     = judul,
+            description = deskripsi,
+        )
+        return JsonResponse({'error':False})
+
+def delete_task(request, id):
+    if request.method == 'POST':
+        task = Task.objects.get(id=id)
+        task.delete()
+        
+        return JsonResponse({'error':False})
+
+
 def change_status(request, id):
-    task = Task.objects.get(id=id)
-    task.is_finished = not task.is_finished
-    task.save()
-    return redirect('todolist:show_todolist')
+    if request.method == 'POST':
+        task = Task.objects.get(id=id)
+        task.is_finished = not task.is_finished
+        task.save()
 
-def delete(request, id):
-    task = Task.objects.get(id=id)
-    task.delete()
-    return redirect('todolist:show_todolist')
-
-
+        task.delete()
+        
+        return JsonResponse({'error':False})

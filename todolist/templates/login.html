@@ -2,11 +2,12 @@
 
 <head>
   <title>Login</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'todolist/login.css' %}"/>
   <style>
-    
+
   </style>
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/todolist/login.css' %}"/>
+
     {% block meta %}
 
     {% endblock meta %}
@@ -47,7 +48,7 @@
                       </div>
           
                       <div>
-                        <p class="mb-0">Belum mempunyai akun? <a href="{% url 'todolist:register' %}" class="text-white-50 fw-bold">Register</a>
+                        <p class="mb-0 teks">Belum mempunyai akun? <a href="{% url 'todolist:register' %}" class="text-white-50 fw-bold">Register</a>
                         </p>
                       </div>
           
