@@ -1,7 +1,9 @@
 import imp
 from turtle import title
+from urllib import response
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -111,14 +113,14 @@ def add_task(request):
             title     = judul,
             description = deskripsi,
         )
-        return JsonResponse({'error':False})
+    return JsonResponse({}, status=200)
 
 def delete_task(request, id):
     if request.method == 'POST':
         task = Task.objects.get(id=id)
         task.delete()
         
-        return JsonResponse({'error':False})
+    return JsonResponse({}, status=200)
 
 
 def change_status(request, id):
@@ -126,7 +128,5 @@ def change_status(request, id):
         task = Task.objects.get(id=id)
         task.is_finished = not task.is_finished
         task.save()
-
-        task.delete()
         
-        return JsonResponse({'error':False})
+    return JsonResponse({}, status=200)
